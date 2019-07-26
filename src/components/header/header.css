@@ -1,0 +1,21 @@
+
+.header-color {
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+}
+
+nav.navbar {
+    width: 100% !important;
+}
+
+nav.navbar span {
+    color: #EEEEEE !important;
+}
+nav.navbar span b {
+    color: white
+}
+
+nav.navbar a {
+    text-decoration: none;
+    color: yellow;
+}

@@ -27,7 +27,7 @@ class post extends Component {
                     </Form.Group>
                     <Form.Group controlId="exampleForm.ControlTextarea1">
                         <Form.Label>Content</Form.Label>
-                        <Form.Control value={this.state.content} onChange={(e) => this.setState({ content: e.target.value})}as="textarea" rows="3" />
+                        <Form.Control value={this.state.content} onChange={(e) => this.setState({ content: e.target.value})}as="textarea" rows="3" placeholder='Enter content' />
                     </Form.Group>
                     <Button variant="primary" disabled={this.state.isDisabled} onClick={() => {
                         this.setState({ isDisabled: true });
@@ -36,7 +36,6 @@ class post extends Component {
                             toast.success("POST note success!", {
                                 position: toast.POSITION.TOP_RIGHT
                             });
-
                             this.setState({ title: '', content: '' , isDisabled: false});
                         })
                         .catch(() => {

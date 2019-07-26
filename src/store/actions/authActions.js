@@ -8,6 +8,7 @@ export function registerUser (username, password, name, email) {
                     if(res.data.success === true) { 
                         localStorage.setItem('id', res.data.result.id);
                         localStorage.setItem('username', res.data.result.username);
+                        localStorage.setItem('email', res.data.result.email);
                         localStorage.setItem('name', res.data.result.name);
                         localStorage.setItem('authorization', res.data.result.token);                      
                         dispatch({
@@ -15,6 +16,7 @@ export function registerUser (username, password, name, email) {
                             data: {
                                 id: res.data.result.id,
                                 username: res.data.result.username,
+                                email: res.data.result.email,
                                 name: res.data.result.name,
                                 token: res.data.result.token
                             }
@@ -46,6 +48,7 @@ export function login (username, password) {
                     if(res.data.success === true) { 
                         localStorage.setItem('id', res.data.result.id);
                         localStorage.setItem('username', res.data.result.username);
+                        localStorage.setItem('email', res.data.result.email);
                         localStorage.setItem('name', res.data.result.name);
                         localStorage.setItem('authorization', res.data.result.token);                       
                         dispatch({
@@ -53,6 +56,7 @@ export function login (username, password) {
                             data: {
                                 id: res.data.result.id,
                                 username: res.data.result.username,
+                                email: res.data.result.email,
                                 name: res.data.result.name,
                                 token: res.data.result.token
                             }
@@ -85,24 +89,26 @@ export function logout(token) {
                 }
             })
             .then(res => {
-                if(res.data.success === true ) {
+                // if(res.data.success === true ) {
                     console.log(res.data);
                     localStorage.removeItem('id');
                     localStorage.removeItem('username');
+                    localStorage.removeItem('email');
                     localStorage.removeItem('name');
                     localStorage.removeItem('authorization');
                     dispatch({
                         type: 'LOGOUT_SUCCESS'
                     })
                     return resolve();
-                } else {
-                    console.log(res.data);
+                // } 
+                // else {
+                //     console.log(res.data);
                     
-                    dispatch({
-                        type: 'LOGOUT_FAIL'
-                    })
-                    return reject();
-                }
+                //     dispatch({
+                //         type: 'LOGOUT_FAIL'
+                //     })
+                //     return reject();
+                // }
                 
             })
             .catch(err => {

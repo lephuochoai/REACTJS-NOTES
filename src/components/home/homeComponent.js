@@ -7,20 +7,14 @@ import { postNote } from '../../store/actions/noteActions';
 import { updateNote } from '../../store/actions/noteActions';
 import { getNotes } from '../../store/actions/noteActions';
 import { deleteNote } from '../../store/actions/noteActions';
+import { colors } from './backgroundColor';
+import { Alert } from 'react-bootstrap';
 
 class homeComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            colors: [
-                'primary',
-                'secondary',
-                'success',
-                'danger',
-                'warning',
-                'info',
-                'dark',
-            ]
+            colors: colors
         }
     }
 
@@ -42,13 +36,13 @@ class homeComponent extends Component {
                 
                 <div className='row'>
                     {
-                        this.props.notes.length === 0 && <div>Empty</div>
+                        this.props.notes.length === 0 && <Alert style={{width: '100%', textAlign: 'center', marginTop: '20px'}} variant='primary'>Notes Empty :) </Alert>
                     }
                     {                        
                         this.props.notes.sort((a,b) => new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime()).map((note, index) => {
                             return <div key={index} className='col-md-4 col-sm-6 col-6 my-2'>                            
                                 <NoteComponent                                      
-                                    colorTitle={ this.randomColor(0, this.state.colors.length -1) } 
+                                    backgroundColor={ this.randomColor(0, this.state.colors.length -1) } 
                                     id={note.id}
                                     title={note.title} 
                                     content={note.content} 

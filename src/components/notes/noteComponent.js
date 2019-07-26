@@ -25,19 +25,18 @@ class NoteComponent extends Component {
         return (
             <div>
             <ToastContainer autoClose={3000} />
-                <Card>
+                <Card style={{border: '1px solid '+this.props.backgroundColor}}>
                     <FormControl
                         aria-label="Username"
                         aria-describedby="basic-addon1"
-                        // variant={this.props.colorTitle}
-                        className={'btn btn-'+this.props.colorTitle}
-                        style={{color: '#rgb(241, 241, 241)'}}
+                        style={{backgroundColor: this.props.backgroundColor, border: '1px solid '+this.props.backgroundColor, textAlign: 'center', color: 'black' }}
                         onChange={ (e) => this.setState({ title: e.target.value, isChange: true }) }
                         value={ this.state.title }
                         />
                     <Card.Body>                        
                         <Form.Control 
                         value={ this.state.content } 
+                        style={{color: 'black'}}
                         onChange={ (e) => this.setState({ content: e.target.value, isChange: true }) } as="textarea" rows="3" />
                     </Card.Body>
                     <Card.Subtitle className="mx-4 mt-1 text-muted"> Created: { moment(this.props.created_at).format("HH:mm DD-MM-YYYY") } </Card.Subtitle>

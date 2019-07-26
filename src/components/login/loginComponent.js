@@ -41,7 +41,7 @@ class loginComponent extends Component {
                     <Button variant="primary" disabled={!this.state.username || !this.state.password} onClick={() => {
                         this.props.login(this.state.username, this.state.password)
                         .then(() => {
-
+                            
                         })
                         .catch((err) => {
                             toast.error("Login Wrong! "+ err, {

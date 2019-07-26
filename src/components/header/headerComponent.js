@@ -6,23 +6,24 @@ import { withRouter } from 'react-router-dom';
 import { logout } from '../../store/actions/authActions';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import './header.css'
+
 
 class headerComponent extends Component {
     
     render() {
         return (
-            <div>
+            <div className='header-color'>
             <ToastContainer autoClose={3000} />
-                <Navbar bg="light" expand="lg">
+                <Navbar className='navbar container' expand="lg">
                     <Navbar.Brand> <NavLink to='/'>Notes U</NavLink> </Navbar.Brand>
                     {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
                     <Navbar.Toggle />
                     <Navbar.Collapse className="justify-content-end mx-2">
                         {/* <Nav className="mr-auto"> */}
-                            <NavLink to='/'>HOME</NavLink>
                                 { this.props.name === '' && <NavLink className='px-2' to='/login'>Login</NavLink>}
                                 { this.props.name === '' && <NavLink className='px-2' to='/register'>Register</NavLink> }
-                                { this.props.name !== '' && <NavLink className='px-2' to='/profile'>{ this.props.name }</NavLink> }
+                                { this.props.name !== '' && <Navbar.Text>Signed in as: <b>{this.props.name}</b> </Navbar.Text> }
                                 { this.props.name !== '' && <NavLink className='px-2' to='/logout' onClick={ () => {
                                     this.props.logout(this.props.token)
                                     .then(res => {

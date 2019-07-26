@@ -3,6 +3,7 @@ const initialState = {
     id: '',
     username: '',
     name: '',
+    email: '',
     token: ''
 }
 
@@ -15,6 +16,7 @@ const authReducers = (state = initialState, action) => {
                 ...state,
                 id: action.data.id,
                 username: action.data.username,
+                email: action.data.email,
                 name: action.data.name,
                 token: action.data.token
             }
@@ -23,6 +25,7 @@ const authReducers = (state = initialState, action) => {
                 ...state,
                 id: '',
                 username: '',
+                email: '',
                 name: '',
                 token: ''
             }
